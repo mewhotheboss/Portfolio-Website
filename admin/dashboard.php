@@ -40,10 +40,7 @@ $name = $_SESSION['name'];
 
             <div class="card-body">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        Add New Project
-                        <span class="badge bg-primary rounded-pill">+</span>
-                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Add New Projects</a>
                     <a href="#" class="list-group-item list-group-item-action">Edit Existing Projects</a>
                     <a href="#" class="list-group-item list-group-item-action">Delete Projects</a>
                 </div>
