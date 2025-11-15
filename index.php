@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="me.png" alt="Amy Photo" width="400" height="400" loading="lazy" decoding="async">
+                    <img src="assets/img/me.png" alt="Amy Photo" width="400" height="400" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
@@ -81,7 +81,7 @@
                 <div class="testimonial-container">
                     <div class="testimonial-grid">
                         <div class="testimonial card1">
-                            <img src="me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
+                            <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
                                 decoding="async">
                             <h3>MR. SAYED</h3>
                             <h5>CTO, TechG</h5><br>
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="testimonial card2">
-                            <img src="me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
+                            <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
                                 decoding="async">
                             <h3>SHAIF ARFAN</h3>
                             <h5>CEO, WEBc.</h5><br>
@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="testimonial card3">
-                            <img src="me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
+                            <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
                                 decoding="async">
                             <h3>AYAN KHAN</h3>
                             <h5>Singer</h5><br>
@@ -146,7 +146,7 @@
                 <h2>ABOUT</h2>
                 <div class="about-grid-container">
                     <div class="about-card">
-                        <img src="me.png" alt="AMY" class="about-img" width="100" height="100" loading="lazy"
+                        <img src="assets/img/me.png" alt="AMY" class="about-img" width="100" height="100" loading="lazy"
                             decoding="async">
                         <p class="about-intro-text">I'm a freelance web designer and developer based in Bangladesh. I
                             love the Web platform and I need to improve it for everybody. What's more, I believe myself
@@ -183,7 +183,7 @@
                 <div class="project-container">
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="me.png" alt="Real Chat Project" loading="lazy" decoding="async">
+                            <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <h3>Real Chat</h3>
@@ -201,7 +201,7 @@
 
                     <div class="project-card reverse">
                         <div class="project-image">
-                            <img src="me.png" alt="Hotel Zaman Website" loading="lazy" decoding="async">
+                            <img src="assets/img/me.png" alt="Hotel Zaman Website" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <h3>Hotel Zaman Website</h3>
@@ -219,7 +219,7 @@
 
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="me.png" alt="Real Chat Project" loading="lazy" decoding="async">
+                            <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <h3>Real Chat</h3>
