@@ -40,9 +40,9 @@ $name = $_SESSION['name'];
 
             <div class="card-body">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Add New Projects</a>
-                    <a href="#" class="list-group-item list-group-item-action">Edit Existing Projects</a>
-                    <a href="#" class="list-group-item list-group-item-action">Delete Projects</a>
+                    <a href="projects/add.php" class="list-group-item list-group-item-action">Add New Projects</a>
+                    <a href="projects/update.php" class="list-group-item list-group-item-action">Update Existing Projects</a>
+                    <a href="projects/delete.php" class="list-group-item list-group-item-action">Delete Projects</a>
                 </div>
             </div>
         </div>

@@ -8,11 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = $conn->prepare("SELECT id, username, name, password FROM users WHERE username= ?");
-    $sql->bind_param("s", $username);
-    $sql->execute();
-    $result = $sql->get_result();
-
+    $stmt = $conn->prepare("SELECT id, username, name, password FROM users WHERE username= ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Invalid username or password.";
     }
-    $sql->close();
+    $stmt->close();
 }
 
 $conn->close();
