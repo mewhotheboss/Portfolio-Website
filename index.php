@@ -21,6 +21,15 @@ while ($row = $service_result->fetch_assoc()) {
     $services[] = $row;
 }
 
+// testimonial section
+$sql3 = "SELECT * FROM testimonial";
+$testimonial_result = $conn->query($sql3);
+
+$testimonials = [];
+while ($row1 = $testimonial_result->fetch_assoc()) {
+    $testimonials[] = $row1;
+}
+
 $conn->close();
 
 ?>
@@ -89,34 +98,15 @@ $conn->close();
                 <h2>TESTIMONIAL</h2>
                 <div class="testimonial-container">
                     <div class="testimonial-grid">
-                        <div class="testimonial card1">
-                            <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
-                                decoding="async">
-                            <h3>MR. SAYED</h3>
-                            <h5>CTO, TechG</h5><br>
-                            <p>AMY conveys quality work. She is an excellent individual and an extraordinary cooperative
-                                person. She is extremely straightforward and puts all her energy to follow through on
-                                schedule.</p>
-                        </div>
-
-                        <div class="testimonial card2">
-                            <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
-                                decoding="async">
-                            <h3>SHAIF ARFAN</h3>
-                            <h5>CEO, WEBc.</h5><br>
-                            <p>I've worked with many individuals who are tendentious and driven by things other than the
-                                work they're doing. AMY is genuinely energetic about the web and the items she makes for
-                                it and that is quite darn marvelous.</p>
-                        </div>
-
-                        <div class="testimonial card3">
-                            <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
-                                decoding="async">
-                            <h3>AYAN KHAN</h3>
-                            <h5>Singer</h5><br>
-                            <p>AMY is a wonderfully creative, collaborative, and gifted developer who excels at creating
-                                inclusive digital solutions.</p>
-                        </div>
+                        <?php foreach ($testimonials as $testimonial): ?>
+                            <div class="testimonial <?= $testimonial['card'] ?>">
+                                <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
+                                    decoding="async">
+                                <h3><?= $testimonial['title'] ?></h3>
+                                <h5><?= $testimonial['subtitle'] ?></h5><br>
+                                <p><?= $testimonial['para'] ?></p>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
