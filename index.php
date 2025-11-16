@@ -39,6 +39,16 @@ while ($row2 = $stats_result->fetch_assoc()) {
     $stats[] = $row2;
 }
 
+// about section
+$sql5 = "SELECT * FROM about WHERE id = 1";
+$about_result = $conn->query($sql5);
+
+if ($about_result->num_rows > 0) {
+    $about = $about_result->fetch_assoc();
+} else {
+    die("No about content found!");
+}
+
 $conn->close();
 
 ?>
@@ -145,26 +155,19 @@ $conn->close();
                     <div class="about-card">
                         <img src="assets/img/me.png" alt="AMY" class="about-img" width="100" height="100" loading="lazy"
                             decoding="async">
-                        <p class="about-intro-text">I'm a freelance web designer and developer based in Bangladesh. I
-                            love the Web platform and I need to improve it for everybody. What's more, I believe myself
-                            to be totally honored that I will assemble it professionally.</p>
+                        <p class="about-intro-text"><?= $about['card_para']; ?></p>
                         <div class="about-signature">
-                            <h3>RAFI</h3>
-                            <h5>WEB Developer</h5>
+                            <h3><?= $hero['name']; ?></h3>
+                            <h5><?= $about['card_title']; ?></h5>
                         </div>
                     </div>
 
                     <div class="about-content">
                         <div class="myname">
-                            <p>Hi! This is RAFI</p>
+                            <p>Hi! This is <?= $hero['name']; ?></p>
                         </div>
-                        <h3>Freelance Web Designer</h3>
-                        <p class="about-bio">I work with companies and agencies around the world, building Web sites and
-                            application UIs with strong focus on responsive design, accessibility, performance, and the
-                            latest in the area of front-end (Javascript, react, gatsby, node, Python, djengo) I also
-                            speak and run workshops across the globe, also focusing on CSS, SVG, Responsive Design and
-                            accessibility, covering practical tips on how to build full stack using modern tools and
-                            techniques that scale and are future-proof.</p>
+                        <h3><?= $about['title']; ?></h3>
+                        <p class="about-bio"><?= $about['para']; ?></p>
                         <div class="buttons about-buttons">
                             <a href="#" class="btn-primary">Download Resume</a>
                             <a href="#" class="button-secondary">Hire Me</a>
