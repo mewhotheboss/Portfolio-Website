@@ -2,6 +2,11 @@
 
 session_start();
 
+if(isset($_SESSION['username'])){
+    header('Location: dashboard.php');
+    exit;
+};
+
 require '../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
