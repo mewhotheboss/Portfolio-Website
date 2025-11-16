@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 require 'config/database.php';
 
+// hero section
 $sql = "SELECT * FROM hero_section WHERE id = 1";
 $result = $conn->query($sql);
 
@@ -9,6 +10,15 @@ if ($result->num_rows > 0) {
     $hero = $result->fetch_assoc();
 } else {
     die("No hero content found!");
+}
+
+// service section
+$sql2 = "SELECT * FROM service";
+$service_result = $conn->query($sql2);
+
+$services = [];
+while ($row = $service_result->fetch_assoc()) {
+    $services[] = $row;
 }
 
 $conn->close();
@@ -61,32 +71,15 @@ $conn->close();
             <div class="container">
                 <h2>SERVICES</h2>
                 <div class="service-container">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="fa-solid fa-desktop"></i>
+                    <?php foreach ($services as $service): ?>
+                        <div class="service">
+                            <div class="icon">
+                                <i class="<?= $service['icon']; ?>"></i>
+                            </div>
+                            <h3><?= $service['title']; ?></h3>
+                            <p><?= $service['para']; ?></p>
                         </div>
-                        <h3>Web Design</h3>
-                        <p>I build up the high performance website with blazing fast speed. Website with high
-                            performance can lead the visitor more.</p>
-                    </div>
-
-                    <div class="service">
-                        <div class="icon">
-                            <i class="fa-solid fa-pen-ruler"></i>
-                        </div>
-                        <h3>UI/UX</h3>
-                        <p>I do UI/UX design for the website that assists website to get an outstanding look. Unique
-                            design creates a unique personality for websites.</p>
-                    </div>
-
-                    <div class="service">
-                        <div class="icon">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                        <h3>SEO</h3>
-                        <p>With SEO, your business can increase its visibility in search results on search engines. I
-                            also provide SEO services to rank your website.</p>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -333,7 +326,9 @@ $conn->close();
                 const targetId = href.substring(1); // Get "hero"
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
                 popupMenu.classList.remove('active');
             });
