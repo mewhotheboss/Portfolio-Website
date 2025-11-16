@@ -30,6 +30,15 @@ while ($row1 = $testimonial_result->fetch_assoc()) {
     $testimonials[] = $row1;
 }
 
+// stats section
+$sql4 = "SELECT * FROM stats";
+$stats_result = $conn->query($sql4);
+
+$stats = [];
+while ($row2 = $stats_result->fetch_assoc()) {
+    $stats[] = $row2;
+}
+
 $conn->close();
 
 ?>
@@ -117,24 +126,13 @@ $conn->close();
                 <h2>STATS</h2>
                 <div class="states-container">
                     <div class="state-grid">
-                        <div class="state">
-                            <h3>50+</h3>
-                            <h5>Project Done</h5><br>
-                            <p>I worked on more than 50+ projects. I know how to make things fascinating and
-                                eye-catching. Making high performance website is always a sign of mine.</p>
-                        </div>
-                        <div class="state">
-                            <h3>30+</h3>
-                            <h5>Happy Clients</h5><br>
-                            <p>I worked with more than 30+ clients. Client satisfaction is my main priority. I generally
-                                attempt to complete the work before the deadline.</p>
-                        </div>
-                        <div class="state">
-                            <h3>4+</h3>
-                            <h5>Years Experience</h5><br>
-                            <p>I worked with more than 30+ clients. Client satisfaction is my main priority. I generally
-                                attempt to complete the work before the deadline.</p>
-                        </div>
+                        <?php foreach ($stats as $stat): ?>
+                            <div class="state">
+                                <h3><?= $stat['title'] ?></h3>
+                                <h5><?= $stat['subtitle'] ?></h5><br>
+                                <p><?= $stat['para'] ?></p>
+                            </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>
