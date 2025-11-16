@@ -190,24 +190,28 @@ $conn->close();
             <div class="container">
                 <h2>PROJECTS</h2>
                 <div class="project-container">
-                    <?php foreach ($projects as $project): ?>
-                        <div class="<?= $project['div_class'] ?>">
-                            <div class="project-image">
-                                <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
-                            </div>
-                            <div class="project-info">
-                                <h3><?= $project['title'] ?></h3>
-                                <h5><?= $project['subtitle'] ?></h5>
-                                <p class="project-paragraph"><?= $project['para'] ?></p>
-                                <div class="project-buttons">
-                                    <a href="#" class="btn-primary">Know More</a>
-                                    <a href="#" class="button-secondary">Preview ↗</a>
+                    <?php foreach ($projects as $key => $project): ?>
+                        <?php if ($key % 2 == 0): ?>
+                            <div class="project-card">
+                            <?php else: ?>
+                                <div class="project-card reverse">
+                                <?php endif ?>
+                                <div class="project-image">
+                                    <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
                                 </div>
+                                <div class="project-info">
+                                    <h3><?= $project['title'] ?></h3>
+                                    <h5><?= $project['subtitle'] ?></h5>
+                                    <p class="project-paragraph"><?= $project['para'] ?></p>
+                                    <div class="project-buttons">
+                                        <a href="#" class="btn-primary">Know More</a>
+                                        <a href="#" class="button-secondary">Preview ↗</a>
+                                    </div>
+                                </div>
+                                </div>
+                            <?php endforeach ?>
                             </div>
-                        </div>
-                    <?php endforeach ?>
                 </div>
-            </div>
         </section>
     </main>
 
@@ -216,8 +220,7 @@ $conn->close();
             <div class="footer-content">
                 <div class="footer-logo-col">
                     <a href="#" class="footer-logo">SHR</a>
-                    <p>A freelance web designer and developer from Chittagong, Bangladesh. I generally make websites
-                        that have extraordinary designs and also have a good performance rate.</p>
+                    <p>A freelance web designer and developer from Chittagong, Bangladesh. I generally make websites that have extraordinary designs and also have a good performance rate.</p>
                 </div>
                 <div class="footer-col footer-links">
                     <h4>IMPORTANT LINKS</h4>
@@ -276,28 +279,7 @@ $conn->close();
         </nav>
     </div>
 
-    <script>
-        const popupMenu = document.querySelector('.popup-menu');
-        const toggleButtons = document.querySelectorAll('.hamburger-btn, .btn-close');
-        const menuLinks = document.querySelectorAll('.popup-nav a');
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', () => popupMenu.classList.toggle('active'));
-        });
-        menuLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                const href = link.getAttribute('href');
-                const targetId = href.substring(1); // Get "hero"
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-                popupMenu.classList.remove('active');
-            });
-        });
-    </script>
+    <script src="assets/js/script.js"></script>
 
 </body>
 
