@@ -2,6 +2,17 @@
 
 require 'config/database.php';
 
+$sql = "SELECT * FROM hero_section WHERE id = 1";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $hero = $result->fetch_assoc();
+} else {
+    die("No hero content found!");
+}
+
+$conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +42,10 @@ require 'config/database.php';
             <div class="hero-container container">
                 <div class="hero-text">
                     <div class="myname">
-                        <p>I'M RAFI</p>
+                        <p>I'M <?= $hero['name']; ?></p>
                     </div>
-                    <h1>Pixels with purpose</h1>
-                    <p>I work with companies and agencies around the globe to design and build their application UIs
-                        with strong focus on responsive design, accessibility, and performance.</p>
+                    <h1><?= $hero['title']; ?></h1>
+                    <p><?= $hero['para']; ?></p>
                     <div class="buttons">
                         <a href="#" class="btn-primary">See My Works</a>
                         <a href="#" class="btn-play">&#9658;</a>
