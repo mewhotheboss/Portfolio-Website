@@ -49,6 +49,15 @@ if ($about_result->num_rows > 0) {
     die("No about content found!");
 }
 
+// project section
+$sql6 = "SELECT * FROM projects";
+$projects_result = $conn->query($sql6);
+
+$projects = [];
+while ($row3 = $projects_result->fetch_assoc()) {
+    $projects[] = $row3;
+}
+
 $conn->close();
 
 ?>
@@ -181,58 +190,22 @@ $conn->close();
             <div class="container">
                 <h2>PROJECTS</h2>
                 <div class="project-container">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
-                        </div>
-                        <div class="project-info">
-                            <h3>Real Chat</h3>
-                            <h5>Online real time chat app.</h5>
-                            <p class="project-paragraph">I made this application for a USA customer. This application is
-                                truly amazing. Here you
-                                can chat with your friend constantly inside a secure environment and there will be no
-                                information reserved after the end of the session.</p>
-                            <div class="project-buttons">
-                                <a href="#" class="btn-primary">Know More</a>
-                                <a href="#" class="button-secondary">Preview ↗</a>
+                    <?php foreach ($projects as $project): ?>
+                        <div class="<?= $project['div_class'] ?>">
+                            <div class="project-image">
+                                <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
+                            </div>
+                            <div class="project-info">
+                                <h3><?= $project['title'] ?></h3>
+                                <h5><?= $project['subtitle'] ?></h5>
+                                <p class="project-paragraph"><?= $project['para'] ?></p>
+                                <div class="project-buttons">
+                                    <a href="#" class="btn-primary">Know More</a>
+                                    <a href="#" class="button-secondary">Preview ↗</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="project-card reverse">
-                        <div class="project-image">
-                            <img src="assets/img/me.png" alt="Hotel Zaman Website" loading="lazy" decoding="async">
-                        </div>
-                        <div class="project-info">
-                            <h3>Hotel Zaman Website</h3>
-                            <h5>A website for hotel zaman.</h5>
-                            <p class="project-paragraph">Hotel Zaman is one of the famous hotels in Chittagong. We
-                                created their website. The
-                                client wanted a clean and smooth design which I was able to provide at the end of the
-                                project.</p>
-                            <div class="project-buttons">
-                                <a href="#" class="btn-primary">Know More</a>
-                                <a href="#" class="button-secondary">Preview ↗</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
-                        </div>
-                        <div class="project-info">
-                            <h3>Real Chat</h3>
-                            <h5>Online real time chat app.</h5>
-                            <p class="project-paragraph">Piranz is one of the famous music composer in UAE. The
-                                challenge was to keep the music environment in the web. It was hard but in the end we
-                                provided a good quality website that satisfied the client.</p>
-                            <div class="project-buttons">
-                                <a href="#" class="btn-primary">Know More</a>
-                                <a href="#" class="button-secondary">Preview ↗</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </section>
