@@ -41,8 +41,7 @@ $name = $_SESSION['name'];
             <div class="card-body">
                 <div class="list-group">
                     <a href="projects/add.php" class="list-group-item list-group-item-action">Add New Projects</a>
-                    <a href="projects/update.php" class="list-group-item list-group-item-action">Update Existing Projects</a>
-                    <a href="projects/delete.php" class="list-group-item list-group-item-action">Delete Projects</a>
+                    <a href="projects/manage.php" class="list-group-item list-group-item-action">Manage Projects</a>
                 </div>
             </div>
         </div>

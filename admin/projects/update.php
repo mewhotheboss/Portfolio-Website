@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 require '../../config/database.php';
 
 if (!isset($_GET['edit_id'])) {
-    header('Location: delete.php');
+    header('Location: manage.php');
     exit;
 }
 $project_id = $_GET['edit_id'];
@@ -28,14 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($stmt->execute()) {
 
-            header('Location: delete.php');
+            header('Location: manage.php');
             exit;
         }
         $stmt->close();
     }
 }
 
-$project = null;
+$project = [];
 $sql_fetch = "SELECT title, subtitle, para FROM projects WHERE id = ?";
 
 if ($stmt = $conn->prepare($sql_fetch)) {
@@ -47,7 +47,7 @@ if ($stmt = $conn->prepare($sql_fetch)) {
         $project = $result->fetch_assoc();
     } else {
 
-        header('Location: delete.php');
+        header('Location: manage.php');
         exit;
     }
     $stmt->close();
@@ -73,7 +73,7 @@ $conn->close();
                 <div class="card shadow-sm">
                     <div class="card-header bg-secondary text-white d-flex justify-content-between align-items.center">
                         <h4 class="mb-0">Edit Project</h4>
-                        <a href="delete.php" class="btn btn-light btn-sm fw-bold">Back to List</a>
+                        <a href="manage.php" class="btn btn-light btn-sm fw-bold">Back to List</a>
                     </div>
 
                     <div class="card-body p-4">
