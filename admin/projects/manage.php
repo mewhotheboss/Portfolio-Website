@@ -62,7 +62,7 @@ $conn->close();
                                     </div>
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <a href="update.php?edit_id=<?= $project['id']; ?>" class="btn btn-outline-danger btn-sm">Edit</a>
-                                        <a href="delete.php?delete_id=<?= $project['id']; ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+                                        <a href="manage.php?delete_id=<?= $project['id']; ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
