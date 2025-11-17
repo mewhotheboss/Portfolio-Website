@@ -23,14 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql_update = "UPDATE projects SET title = ?, subtitle = ?, para = ? WHERE id = ?";
 
     if ($stmt = $conn->prepare($sql_update)) {
-
         $stmt->bind_param("sssi", $title, $subtitle, $para, $project_id);
-
-        if ($stmt->execute()) {
-
-            header('Location: manage.php');
-            exit;
-        }
+        $stmt->execute();
         $stmt->close();
     }
 }
@@ -45,10 +39,6 @@ if ($stmt = $conn->prepare($sql_fetch)) {
 
     if ($result->num_rows == 1) {
         $project = $result->fetch_assoc();
-    } else {
-
-        header('Location: manage.php');
-        exit;
     }
     $stmt->close();
 }
@@ -80,17 +70,17 @@ $conn->close();
                         <form action="update.php?edit_id=<?php echo $project_id; ?>" method="POST">
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Project Title</label>
-                                <input type="text" class="form-control" name="title" value="<?php echo htmlspecialchars($project['title']); ?>" required>
+                                <input type="text" class="form-control" name="title" value="<?= $project['title']; ?>" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Subtitle</label>
-                                <input type="text" class="form-control" name="subtitle" value="<?php echo htmlspecialchars($project['subtitle']); ?>" required>
+                                <input type="text" class="form-control" name="subtitle" value="<?= $project['subtitle']; ?>" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Description</label>
-                                <textarea class="form-control" name="para" rows="6" required><?php echo htmlspecialchars($project['para']); ?></textarea>
+                                <textarea class="form-control" name="para" rows="6" required><?= $project['para']; ?></textarea>
                             </div>
 
                             <div class="d-grid">
