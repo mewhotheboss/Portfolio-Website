@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-$project = null;
+$project = [];
 $sql_fetch = "SELECT title, subtitle, para FROM projects WHERE id = ?";
 
 if ($stmt = $conn->prepare($sql_fetch)) {
