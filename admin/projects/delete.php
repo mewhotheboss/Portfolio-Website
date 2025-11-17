@@ -61,7 +61,7 @@ $conn->close();
                                         <small class="text-muted"><?= $project['subtitle']; ?></small>
                                     </div>
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <a href="update.php?delete_id=<?= $project['id']; ?>" class="btn btn-outline-danger btn-sm">Edit</a>
+                                        <a href="update.php?edit_id=<?= $project['id']; ?>" class="btn btn-outline-danger btn-sm">Edit</a>
                                         <a href="delete.php?delete_id=<?= $project['id']; ?>" class="btn btn-outline-danger btn-sm">Delete</a>
                                     </div>
                                 </div>
