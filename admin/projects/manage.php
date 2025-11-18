@@ -11,6 +11,25 @@ require '../../config/database.php';
 if (isset($_GET['delete_id'])) {
     $delete = $_GET['delete_id'];
 
+    if ($delete !== null && is_numeric($delete)) {
+
+        $deleteimage = $conn->prepare("SELECT image FROM projects WHERE id = ?");
+        $deleteimage->bind_param("i", $delete);
+        $deleteimage->execute();
+        $deleteresult = $deleteimage->get_result();
+
+        if ($row = $deleteresult->fetch_assoc()) {
+            $img_name = $row['image'];
+        }
+
+        $folder = '../../assets/img/' . $img_name;
+
+        if (file_exists($folder)) {
+            unlink($folder);
+        }
+        $deleteimage->close();
+    }
+
     $sql = "DELETE FROM projects WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $delete);
