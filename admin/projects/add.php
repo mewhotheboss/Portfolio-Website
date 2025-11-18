@@ -8,15 +8,20 @@ if (!isset($_SESSION['username'])) {
 
 require '../../config/database.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {    
 
     $title = $_POST['title'];
     $subtitle = $_POST['subtitle'];
     $para = $_POST['para'];
 
-    $sql = "INSERT INTO projects (title, subtitle, para) VALUES (?,?,?)";
+    $image = $_FILES['image']['name'];
+    $tempname = $_FILES['image']['tmp_name'];
+    $folder = '../../assets/img/' . $image;
+    move_uploaded_file($tempname, $folder);
+
+    $sql = "INSERT INTO projects (title, subtitle, para, image) VALUES (?,?,?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $title, $subtitle, $para);
+    $stmt->bind_param("ssss", $title, $subtitle, $para, $image);
     $stmt->execute();
     $stmt->close();
 }
@@ -48,7 +53,7 @@ $conn->close();
 
                     <div class="card-body p-4">
 
-                        <form action="add.php" method="POST">
+                        <form action="add.php" method="POST" enctype="multipart/form-data">
 
                             <div class="mb-3">
                                 <label for="title" class="form-label fw-bold">Project Title</label>
@@ -63,6 +68,11 @@ $conn->close();
                             <div class="mb-3">
                                 <label for="para" class="form-label fw-bold">Description</label>
                                 <textarea class="form-control" name="para" rows="6" placeholder="Description" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image" class="form-label fw-bold">Upload Image:</label>
+                                <input type="file" name="image">
                             </div>
 
                             <div class="d-grid">

@@ -197,7 +197,7 @@ $conn->close();
                                 <div class="project-card reverse">
                                 <?php endif ?>
                                 <div class="project-image">
-                                    <img src="assets/img/me.png" alt="Real Chat Project" loading="lazy" decoding="async">
+                                    <img src="assets/img/<?= $project['image']; ?> ?>" alt="Real Chat Project" loading="lazy" decoding="async">
                                 </div>
                                 <div class="project-info">
                                     <h3><?= $project['title'] ?></h3>
