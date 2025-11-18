@@ -20,17 +20,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $subtitle = $_POST['subtitle'];
     $para = $_POST['para'];
 
-    $sql_update = "UPDATE projects SET title = ?, subtitle = ?, para = ? WHERE id = ?";
-
-    if ($stmt = $conn->prepare($sql_update)) {
-        $stmt->bind_param("sssi", $title, $subtitle, $para, $project_id);
+    $old_image = "";
+    $get_old = "SELECT image FROM projects WHERE id = ?";
+    if ($stmt = $conn->prepare($get_old)) {
+        $stmt->bind_param("i", $project_id);
         $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $old_image = $row['image'];
+        }
         $stmt->close();
+    }
+
+    if (!empty($_FILES['image']['name'])) {
+
+        $image_name = $_FILES['image']['name'];
+        $tempname = $_FILES['image']['tmp_name'];
+        $folder = '../../assets/img/' . $image_name;
+
+        if (move_uploaded_file($tempname, $folder)) {
+            if (!empty($old_image)) {
+                $old_file_path = '../../assets/img/' . $old_image;
+                if (file_exists($old_file_path)) {
+                    unlink($old_file_path);
+                }
+            }
+
+            $sql_update = "UPDATE projects SET title = ?, subtitle = ?, para = ?, image = ? WHERE id = ?";
+            if ($stmt = $conn->prepare($sql_update)) {
+                $stmt->bind_param("ssssi", $title, $subtitle, $para, $image_name, $project_id);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+    } else {
+        $sql_update = "UPDATE projects SET title = ?, subtitle = ?, para = ? WHERE id = ?";
+        if ($stmt = $conn->prepare($sql_update)) {
+            $stmt->bind_param("sssi", $title, $subtitle, $para, $project_id);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
 }
 
 $project = [];
-$sql_fetch = "SELECT title, subtitle, para FROM projects WHERE id = ?";
+$sql_fetch = "SELECT title, subtitle, para, image FROM projects WHERE id = ?";
 
 if ($stmt = $conn->prepare($sql_fetch)) {
     $stmt->bind_param("i", $project_id);
@@ -67,7 +101,7 @@ $conn->close();
                     </div>
 
                     <div class="card-body p-4">
-                        <form action="update.php?edit_id=<?php echo $project_id; ?>" method="POST">
+                        <form action="update.php?edit_id=<?php echo $project_id; ?>" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Project Title</label>
                                 <input type="text" class="form-control" name="title" value="<?= $project['title']; ?>" required>
@@ -81,6 +115,12 @@ $conn->close();
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Description</label>
                                 <textarea class="form-control" name="para" rows="6" required><?= $project['para']; ?></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image" class="form-label fw-bold">Change Image:</label>
+                                <input type="file" name="image">
+                                <img src="../../assets/img/<?= $project['image']; ?>" width="100px" height="100px">
                             </div>
 
                             <div class="d-grid">
