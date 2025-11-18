@@ -72,7 +72,7 @@ $conn->close();
 
                             <div class="mb-3">
                                 <label for="image" class="form-label fw-bold">Upload Image:</label>
-                                <input type="file" name="image">
+                                <input type="file" name="image" required>
                             </div>
 
                             <div class="d-grid">
