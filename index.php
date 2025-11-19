@@ -1,5 +1,4 @@
 <?php
-
 require 'config/database.php';
 
 // hero section
