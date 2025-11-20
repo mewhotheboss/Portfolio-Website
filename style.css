@@ -859,16 +859,42 @@ footer {
 }
 
 .scroll-top {
+  position: fixed;
+  /* Sticks to the screen */
+  bottom: 2rem;
+  /* Distance from bottom */
+  right: 2rem;
+  /* Distance from right */
+  z-index: 1000;
+  /* Ensures it stays on top of other content */
+
   background-color: #ffffff;
   color: #2d0a68;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  /* Increased size slightly for better clicking */
+  height: 50px;
+  border-radius: 50%;
+  /* Makes it a perfect circle */
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /* Adds a shadow so it pops out */
+
+  /* Animation for showing/hiding */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Create a new class to show the button when active */
+.scroll-top.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .footer-col a:hover {

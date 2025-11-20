@@ -283,9 +283,11 @@
     <div class="footer-bottom">
         <div class="container">
             <p>&copy; Copyright 2025 Sakibul Hasan Rafi. All right Reserved</p>
-            <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+            <!-- <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a> -->
         </div>
     </div>
+
+    <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
 
     <div class="popup-menu">
         <button class="btn-close" aria-label="Close menu">&times;</button>
@@ -303,25 +305,61 @@
         </nav>
     </div>
 
-    <script>
+    <script>        
+        // HAMBURGER MENU LOGIC
+
         const popupMenu = document.querySelector('.popup-menu');
         const toggleButtons = document.querySelectorAll('.hamburger-btn, .btn-close');
         const menuLinks = document.querySelectorAll('.popup-nav a');
+
+        // Toggle menu open/close
         toggleButtons.forEach(button => {
             button.addEventListener('click', () => popupMenu.classList.toggle('active'));
         });
+
+        // Close menu when a link is clicked & smooth scroll to section
         menuLinks.forEach(link => {
             link.addEventListener('click', (event) => {
                 event.preventDefault();
                 const href = link.getAttribute('href');
-                const targetId = href.substring(1); // Get "hero"
+                const targetId = href.substring(1); // Remove '#' to get ID
                 const targetSection = document.getElementById(targetId);
+
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth' });
                 }
+                // Close the menu after clicking
                 popupMenu.classList.remove('active');
             });
         });
+
+        
+        // SCROLL TO TOP LOGIC
+           
+        const scrollTopBtn = document.querySelector('.scroll-top');
+
+        // Only run this if the button actually exists in HTML
+        if (scrollTopBtn) {
+
+            // A. Listen for scroll to show/hide button
+            window.addEventListener('scroll', () => {
+                // If user scrolled down more than 300px, show button
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+
+            // B. Listen for click to scroll up
+            scrollTopBtn.addEventListener('click', (event) => {
+                event.preventDefault(); // Stop default anchor jump
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
     </script>
 
 </body>
