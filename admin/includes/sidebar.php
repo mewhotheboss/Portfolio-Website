@@ -14,7 +14,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                
+
                 <!-- PROFILE LINK (Active if on profile.php) -->
                 <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'profile.php') ? 'active' : ''; ?>">
                     <a href="profile.php">
@@ -29,11 +29,17 @@
                     </span>
                     <h4 class="text-section">Management</h4>
                 </li>
+                <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'hero.php') ? 'active' : ''; ?>">
+                    <a href="hero.php">
+                        <i class="fas fa-home"></i>
+                        <p>Hero Section</p>
+                    </a>
+                </li>
 
                 <!-- PROJECT LINKS (Active if on add, manage, or update) -->
-                <?php 
-                    $current_page = basename($_SERVER['PHP_SELF']);
-                    $is_project_page = ($current_page == 'manage.php' || $current_page == 'add.php' || $current_page == 'update.php');
+                <?php
+                $current_page = basename($_SERVER['PHP_SELF']);
+                $is_project_page = ($current_page == 'manage.php' || $current_page == 'add.php' || $current_page == 'update.php');
                 ?>
                 <li class="nav-item <?php echo $is_project_page ? 'active submenu' : ''; ?>">
                     <a data-bs-toggle="collapse" href="#projects">
