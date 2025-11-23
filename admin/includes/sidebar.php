@@ -49,14 +49,9 @@
                     </a>
                     <div class="collapse <?php echo $is_project_page ? 'show' : ''; ?>" id="projects">
                         <ul class="nav nav-collapse">
-                            <li class="<?php echo ($current_page == 'add.php') ? 'active' : ''; ?>">
-                                <a href="add.php">
-                                    <span class="sub-item">Add New</span>
-                                </a>
-                            </li>
                             <li class="<?php echo ($current_page == 'manage.php') ? 'active' : ''; ?>">
                                 <a href="manage.php">
-                                    <span class="sub-item">Manage List</span>
+                                    <span class="sub-item">Manage Projects</span>
                                 </a>
                             </li>
                         </ul>
