@@ -3,7 +3,7 @@ session_start();
 
 
 if(isset($_SESSION['username'])){
-    header('Location: dashboard.php');
+    header('Location: profile.php');
     exit;
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $user['username'];
             $_SESSION['name'] = $user['name'];
             $_SESSION['user_id'] = $user['id']; 
-            header('Location: dashboard.php');
+            header('Location: profile.php');
             exit;
         } else {
             echo "<script>alert('Invalid username or password.');</script>";
