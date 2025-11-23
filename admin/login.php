@@ -1,13 +1,14 @@
 <?php
-
 session_start();
+
 
 if(isset($_SESSION['username'])){
     header('Location: dashboard.php');
     exit;
-};
+}
 
 require '../config/database.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -20,55 +21,84 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
+        
         if (password_verify($password, $user['password'])) {
-            echo "Login successful!";
             $_SESSION['username'] = $user['username'];
             $_SESSION['name'] = $user['name'];
+            $_SESSION['user_id'] = $user['id']; 
             header('Location: dashboard.php');
             exit;
         } else {
-            echo "Invalid username or password.";
+            echo "<script>alert('Invalid username or password.');</script>";
         }
     } else {
-        echo "Invalid username or password.";
+        echo "<script>alert('Invalid username or password.');</script>";
     }
     $stmt->close();
 }
-
 $conn->close();
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login - Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    
+    
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {"families": ["Public Sans:300,400,500,600,700"]},
+            custom: {"families": ["Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+            active: function() { sessionStorage.fonts = true; }
+        });
+    </script>
+
+    
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins.min.css">
+    <link rel="stylesheet" href="../assets/css/kaiadmin.min.css">
 </head>
 
-<body>
+<body class="login bg-primary">
+    <div class="wrapper wrapper-login">
+        <div class="container container-login animated fadeIn">
+            <h3 class="text-center">Sign In</h3>
+            <div class="login-form">
+                <form action="login.php" method="POST">
+                    <div class="form-group">
+                        <label for="username"><b>Username</b></label>
+                        <input id="username" name="username" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><b>Password</b></label>
+                        <a href="forgot.php" class="link float-end">Forget Password ?</a>
+                        <div class="position-relative">
+                            <input id="password" name="password" type="password" class="form-control" required>
+                            <div class="show-password">
+                                <i class="icon-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-action-d-flex mb-3">
+                        <button type="submit" class="btn btn-primary col-md-12 float-end mt-3 mt-sm-0 fw-bold">Sign In</button>
+                    </div>
+                </form>
 
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
-            <h3 class="text-center mb-4 fw-bold">Admin Login</h3>
-
-            <form action="login.php" method="POST">
-                <div class="mb-3">
-                    <label for="username" class="form-label fw-bold">Type Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                <div class="login-account">
+                    <span class="msg">Don't have an account yet ?</span>
+                    
+                    <a href="register.php" class="link">Sign Up</a>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label fw-bold">Type Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
-            </form>
+            </div>
         </div>
     </div>
-
+    
+    <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/kaiadmin.min.js"></script>
 </body>
-
 </html>
