@@ -88,7 +88,7 @@ $conn->close();
             <div class="hero-container container">
                 <div class="hero-text">
                     <div class="myname">
-                        <p>I'M <?= $hero['name']; ?></p>
+                        <p><?= $hero['name']; ?></p>
                     </div>
                     <h1><?= $hero['title']; ?></h1>
                     <p><?= $hero['para']; ?></p>
@@ -270,9 +270,11 @@ $conn->close();
                     <h1>MENU</h1>
                 </li>
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#abouts">About</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#testimonials">Testimonial</a></li>
+                <li><a href="#states">Stats</a></li>
+                <li><a href="#abouts">About</a></li>
+                <li><a href="#projects">Projects</a></li>                
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
