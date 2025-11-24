@@ -56,6 +56,12 @@
                             </li>
                         </ul>
                     </div>
+                <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'service.php') ? 'active' : ''; ?>">
+                    <a href="service.php">
+                        <i class="fas fa-briefcase"></i>
+                        <p>Services</p>
+                    </a>
+                </li>
                 </li>
 
                 <!-- LOGOUT -->
