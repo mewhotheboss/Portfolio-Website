@@ -88,7 +88,7 @@ $conn->close();
             <div class="hero-container container">
                 <div class="hero-text">
                     <div class="myname">
-                        <p><?= $hero['name']; ?></p>
+                        <p>I'M <?= $hero['name']; ?></p>
                     </div>
                     <h1><?= $hero['title']; ?></h1>
                     <p><?= $hero['para']; ?></p>
@@ -98,7 +98,7 @@ $conn->close();
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="assets/img/me.png" alt="Amy Photo" width="400" height="400" loading="lazy" decoding="async">
+                    <img src="assets/img/<?= $hero['image']; ?>" alt="Amy Photo" width="400" height="400" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
