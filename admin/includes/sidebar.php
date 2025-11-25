@@ -74,6 +74,12 @@
                         <p>Stats</p>
                     </a>
                 </li>
+                <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'testimonial.php') ? 'active' : ''; ?>">
+                    <a href="testimonial.php">
+                        <i class="fas fa-comments"></i>
+                        <p>Testimonials</p>
+                    </a>
+                </li>
                 </li>
 
                 <!-- LOGOUT -->

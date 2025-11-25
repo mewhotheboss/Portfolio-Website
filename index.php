@@ -129,8 +129,8 @@ $conn->close();
                 <div class="testimonial-container">
                     <div class="testimonial-grid">
                         <?php foreach ($testimonials as $testimonial): ?>
-                            <div class="testimonial <?= $testimonial['card'] ?>">
-                                <img src="assets/img/me.png" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
+                            <div class="testimonial <?= $testimonial['card']; ?>">
+                                <img src="assets/img/<?= $testimonial['image']; ?>" alt="AMY" class="about-img" width="90" height="90" loading="lazy"
                                     decoding="async">
                                 <h3><?= $testimonial['title'] ?></h3>
                                 <h5><?= $testimonial['subtitle'] ?></h5><br>
