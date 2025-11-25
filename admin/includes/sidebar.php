@@ -68,6 +68,12 @@
                         <p>About Me</p>
                     </a>
                 </li>
+                <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'stats.php') ? 'active' : ''; ?>">
+                    <a href="stats.php">
+                        <i class="fas fa-chart-bar"></i>
+                        <p>Stats</p>
+                    </a>
+                </li>
                 </li>
 
                 <!-- LOGOUT -->
