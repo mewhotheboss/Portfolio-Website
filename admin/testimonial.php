@@ -87,8 +87,8 @@ include 'includes/header.php';
                                 <td><?php echo htmlspecialchars($row['subtitle']); ?></td>
                                 <td><?php echo htmlspecialchars(substr($row['para'], 0, 50)) . '...'; ?></td>
                                 <td>
-                                    <a href="testimonial.php?action=edit&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-edit"></i> Edit
+                                    <a href="testimonial.php?action=edit&id=<?php echo $row['id']; ?>" class="btn btn-link btn-primary btn-lg">
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
                             </tr>
