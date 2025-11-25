@@ -62,6 +62,12 @@
                         <p>Services</p>
                     </a>
                 </li>
+                <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'about.php') ? 'active' : ''; ?>">
+                    <a href="about.php">
+                        <i class="fas fa-user-tie"></i>
+                        <p>About Me</p>
+                    </a>
+                </li>
                 </li>
 
                 <!-- LOGOUT -->

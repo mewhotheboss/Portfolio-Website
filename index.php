@@ -84,6 +84,7 @@ $conn->close();
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section id="hero" class="hero">
             <div class="hero-container container">
                 <div class="hero-text">
@@ -103,6 +104,7 @@ $conn->close();
             </div>
         </section>
 
+        <!-- SERVICE SECTION -->
         <section id="services" class="services">
             <div class="container">
                 <h2>SERVICES</h2>
@@ -120,6 +122,7 @@ $conn->close();
             </div>
         </section>
 
+        <!-- TESTIMONIAL SECTION -->
         <section id="testimonials" class="testimonials">
             <div class="container">
                 <h2>TESTIMONIAL</h2>
@@ -139,6 +142,7 @@ $conn->close();
             </div>
         </section>
 
+        <!-- STATES SECTION -->
         <section id="states" class="states">
             <div class="container">
                 <h2>STATS</h2>
@@ -156,12 +160,13 @@ $conn->close();
             </div>
         </section>
 
+        <!-- ABOUT SECTION -->
         <section id="abouts" class="abouts">
             <div class="container">
                 <h2>ABOUT</h2>
                 <div class="about-grid-container">
                     <div class="about-card">
-                        <img src="assets/img/me.png" alt="AMY" class="about-img" width="100" height="100" loading="lazy"
+                        <img src="assets/img/<?= $hero['image']; ?>" alt="AMY" class="about-img" width="100" height="100" loading="lazy"
                             decoding="async">
                         <p class="about-intro-text"><?= $about['card_para']; ?></p>
                         <div class="about-signature">
@@ -185,6 +190,7 @@ $conn->close();
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects" class="projects">
             <div class="container">
                 <h2>PROJECTS</h2>
@@ -214,6 +220,7 @@ $conn->close();
         </section>
     </main>
 
+    <!-- FOOTER SECTION -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -223,6 +230,7 @@ $conn->close();
                 </div>
                 <div class="footer-col footer-links">
                     <h4>IMPORTANT LINKS</h4>
+                    <!-- PAGE NAVIGATION LINKS -->
                     <ul>
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#services">Services</a></li>
@@ -235,6 +243,7 @@ $conn->close();
                 </div>
                 <div class="footer-col footer-links">
                     <h4>CONTACT INFO</h4>
+                    <!-- CONTACT INFORMATION -->
                     <ul>
                         <li><a href="mailto:hello@gmail.com">hello@gmail.com</a></li>
                         <li><a href="tel:018000000000">+88018000000000</a></li>
@@ -243,6 +252,7 @@ $conn->close();
                 </div>
                 <div class="footer-col social-links">
                     <h4>SOCIAL LINKS</h4>
+                    <!-- SOCIAL MEDIA LINKS -->
                     <div class="links">
                         <span><a href="https://github.com">GitHub</a></span>
                         <span><a href="https://facebook.com">Facebook</a></span>
@@ -255,6 +265,7 @@ $conn->close();
         </div>
     </footer>
 
+    <!-- COPYRIGHT -->
     <div class="footer-bottom">
         <div class="container">
             <p>&copy; Copyright 2025 Sakibul Hasan Rafi. All right Reserved</p>
@@ -262,6 +273,7 @@ $conn->close();
         </div>
     </div>
 
+    <!-- POPUP MENU | TOP OF THE PAGE RIGHT -->
     <div class="popup-menu">
         <button class="btn-close" aria-label="Close menu">&times;</button>
         <nav class="popup-nav">
