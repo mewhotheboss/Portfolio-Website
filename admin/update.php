@@ -15,16 +15,13 @@ if (!isset($_GET['edit_id'])) {
 $id = $_GET['edit_id'];
 $message = "";
 
-// --- UPDATE LOGIC ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $subtitle = $_POST['subtitle'];
     $para = $_POST['para'];
 
-    // Check if New Image Uploaded
     if (!empty($_FILES['image']['name'])) {
-        
-        // 1. Delete Old Image
+
         $old_sql = "SELECT image FROM projects WHERE id = ?";
         $stmt_old = $conn->prepare($old_sql);
         $stmt_old->bind_param("i", $id);
@@ -34,33 +31,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $old_path = '../assets/img/' . $row_old['image'];
         if (file_exists($old_path)) unlink($old_path);
 
-        // 2. Upload New
         $image = $_FILES['image']['name'];
         $unique_name = time() . '_' . $image;
         $target = '../assets/img/' . $unique_name;
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
 
-        // 3. Update DB with Image
         $sql = "UPDATE projects SET title=?, subtitle=?, para=?, image=? WHERE id=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssi", $title, $subtitle, $para, $unique_name, $id);
     
     } else {
-        // Update DB WITHOUT Image
         $sql = "UPDATE projects SET title=?, subtitle=?, para=? WHERE id=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssi", $title, $subtitle, $para, $id);
     }
 
     if ($stmt->execute()) {
-        header('Location: manage.php'); // Redirect to list on success
+        header('Location: manage.php');
         exit;
     } else {
         $message = "error";
     }
 }
 
-// --- FETCH EXISTING DATA ---
 $sql = "SELECT * FROM projects WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);

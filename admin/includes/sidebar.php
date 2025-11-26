@@ -15,7 +15,7 @@
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
 
-                <!-- PROFILE LINK (Active if on profile.php) -->
+                <!-- PROFILE LINK -->
                 <li class="nav-item <?php echo (basename($_SERVER['PHP_SELF']) == 'profile.php') ? 'active' : ''; ?>">
                     <a href="profile.php">
                         <i class="fas fa-user"></i>
@@ -36,7 +36,7 @@
                     </a>
                 </li>
 
-                <!-- PROJECT LINKS (Active if on add, manage, or update) -->
+                <!-- PROJECT LINKS -->
                 <?php
                 $current_page = basename($_SERVER['PHP_SELF']);
                 $is_project_page = ($current_page == 'manage.php' || $current_page == 'add.php' || $current_page == 'update.php');

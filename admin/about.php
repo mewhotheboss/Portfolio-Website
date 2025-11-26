@@ -5,7 +5,6 @@ require '../config/database.php';
 
 $message = "";
 
-// --- HANDLE UPDATE ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $card_title = $_POST['card_title'];
     $card_para = $_POST['card_para'];
@@ -23,10 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// --- FETCH DATA ---
 $result = $conn->query("SELECT * FROM about WHERE id=1");
 if ($result->num_rows == 0) {
-    // Insert dummy row if empty
     $conn->query("INSERT INTO about (id, card_title, card_para, title, para) VALUES (1, 'My Role', 'Short intro...', 'Main Title', 'Long bio...')");
     $result = $conn->query("SELECT * FROM about WHERE id=1");
 }

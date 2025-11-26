@@ -6,7 +6,6 @@ require '../config/database.php';
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 $message = "";
 
-// --- HANDLE SUBMISSIONS ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $para = $_POST['para'];
@@ -30,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 
-// --- HANDLE DELETE ---
 if ($action == 'delete' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $conn->query("DELETE FROM service WHERE id=$id");
@@ -56,7 +54,6 @@ include 'includes/header.php';
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <!-- Icon column removed as requested -->
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th style="width: 15%">Action</th>
@@ -118,7 +115,6 @@ include 'includes/header.php';
                             <div class="form-group">
                                 <label>Icon Class (FontAwesome)</label>
                                 <input type="text" class="form-control" name="icon" placeholder="e.g. fa-solid fa-code" value="<?php echo htmlspecialchars($data['icon']); ?>" required>
-                                <small class="form-text text-muted">Check <a href="https://fontawesome.com/search" target="_blank">FontAwesome</a> for class names.</small>
                             </div>
                         </div>
                     </div>

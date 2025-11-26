@@ -6,11 +6,10 @@ require '../config/database.php';
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 $message = "";
 
-// --- HANDLE SUBMISSIONS ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];       // e.g. "50+"
-    $subtitle = $_POST['subtitle']; // e.g. "Project Done"
-    $para = $_POST['para'];         // e.g. "Short description..."
+    $title = $_POST['title'];
+    $subtitle = $_POST['subtitle'];
+    $para = $_POST['para'];
 
     if ($_POST['form_action'] == 'add') {
         $sql = "INSERT INTO stats (title, subtitle, para) VALUES (?, ?, ?)";
@@ -30,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 
-// --- HANDLE DELETE ---
 if ($action == 'delete' && isset($_GET['id'])) {
     $id = $_GET['id'];
     $conn->query("DELETE FROM stats WHERE id=$id");
@@ -93,7 +91,7 @@ include 'includes/header.php';
             </div>
         </div>
 
-        <!-- SHOW ADD/EDIT FORM -->
+        <!-- SHOW ADD/EDIT -->
         <?php elseif ($action == 'add' || $action == 'edit'): 
             $is_edit = ($action == 'edit');
             $data = ['title'=>'', 'subtitle'=>'', 'para'=>''];

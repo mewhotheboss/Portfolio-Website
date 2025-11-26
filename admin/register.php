@@ -1,14 +1,12 @@
 <?php
 session_start();
 
-
 if(isset($_SESSION['username'])){
     header('Location: dashboard.php');
     exit;
 }
 
 require '../config/database.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fullname = $_POST['fullname'];
@@ -55,8 +53,7 @@ $conn->close();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Register - Admin Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    
-    
+
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
@@ -66,7 +63,6 @@ $conn->close();
         });
     </script>
 
-    
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/plugins.min.css">
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css">

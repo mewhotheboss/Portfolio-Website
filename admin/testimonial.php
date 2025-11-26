@@ -6,38 +6,31 @@ require '../config/database.php';
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 $message = "";
 
-// --- HANDLE UPDATE ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form_action'] == 'edit') {
     $id = $_POST['id'];
-    $title = $_POST['title'];       // Client Name
-    $subtitle = $_POST['subtitle']; // Position/Job
-    $para = $_POST['para'];         // Review Text
+    $title = $_POST['title'];
+    $subtitle = $_POST['subtitle'];
+    $para = $_POST['para'];
 
-    // Check for New Image
     if (!empty($_FILES['image']['name'])) {
-        // 1. Get Old Image Name
         $res_old = $conn->query("SELECT image FROM testimonial WHERE id=$id");
         $row_old = $res_old->fetch_assoc();
         $old_path = '../assets/img/' . $row_old['image'];
 
-        // 2. Upload New Image
         $image_name = $_FILES['image']['name'];
         $unique_name = time() . '_' . $image_name;
         $target = '../assets/img/' . $unique_name;
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-            // 3. Delete Old File
             if (file_exists($old_path) && !empty($row_old['image'])) {
                 unlink($old_path);
             }
-            // 4. Update DB with Image
             $sql = "UPDATE testimonial SET title=?, subtitle=?, para=?, image=? WHERE id=?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssi", $title, $subtitle, $para, $unique_name, $id);
             $stmt->execute();
         }
     } else {
-        // Update WITHOUT Image
         $sql = "UPDATE testimonial SET title=?, subtitle=?, para=? WHERE id=?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssi", $title, $subtitle, $para, $id);

@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// 1. Security Check
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -12,7 +11,6 @@ require '../config/database.php';
 $user_id = $_SESSION['user_id'];
 $message = "";
 
-// 2. Handle Profile Update
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -33,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// 3. Fetch User Data
 $user = [];
 $sql = "SELECT name, email, username FROM users WHERE id = ?";
 if ($stmt = $conn->prepare($sql)) {
@@ -46,15 +43,13 @@ if ($stmt = $conn->prepare($sql)) {
     $stmt->close();
 }
 
-// --- 4. INCLUDE HEADER (Loads the Sidebar) ---
 include 'includes/header.php'; 
 ?>
 
-<!-- --- 5. MAIN CONTENT --- -->
 <h3 class="fw-bold mb-3">User Profile</h3>
 
 <div class="row">
-    <!-- Left Column: Edit Form -->
+    <!-- Left Column -->
     <div class="col-md-8">
         <div class="card card-with-nav">
             <div class="card-header">
@@ -102,7 +97,7 @@ include 'includes/header.php';
         </div>
     </div>
 
-    <!-- Right Column: Profile Card -->
+    <!-- Right Column -->
     <div class="col-md-4">
         <div class="card card-profile">
             <div class="card-header" style="background-image: url('../assets/img/blogpost.jpg')">
@@ -126,6 +121,6 @@ include 'includes/header.php';
 </div>
 
 <?php 
-// --- 6. INCLUDE FOOTER ---
+
 include 'includes/footer.php'; 
 ?>

@@ -8,11 +8,9 @@ if (!isset($_SESSION['user_id'])) {
 
 require '../config/database.php';
 
-// --- DELETE LOGIC ---
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
 
-    // 1. Get Image Name
     $sql_img = "SELECT image FROM projects WHERE id = ?";
     $stmt_img = $conn->prepare($sql_img);
     $stmt_img->bind_param("i", $delete_id);
@@ -22,24 +20,21 @@ if (isset($_GET['delete_id'])) {
     if ($row = $res_img->fetch_assoc()) {
         $img_path = '../assets/img/' . $row['image'];
         if (file_exists($img_path)) {
-            unlink($img_path); // Delete file
+            unlink($img_path);
         }
     }
     $stmt_img->close();
 
-    // 2. Delete Row
     $sql = "DELETE FROM projects WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $delete_id);
     $stmt->execute();
     $stmt->close();
-    
-    // Refresh to remove the ID from URL
+
     header('Location: manage.php'); 
     exit;
 }
 
-// --- FETCH DATA ---
 $projects = [];
 $result = $conn->query("SELECT * FROM projects ORDER BY id DESC");
 if ($result) {

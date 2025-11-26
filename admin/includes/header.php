@@ -14,13 +14,11 @@ if (!isset($_SESSION['user_id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Admin Panel</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    
-    <!-- CSS Files -->
+
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/plugins.min.css">
     <link rel="stylesheet" href="../assets/css/kaiadmin.min.css">
 
-    <!-- Fonts -->
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
@@ -33,7 +31,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <div class="wrapper">
         
-        <!-- INCLUDE SIDEBAR HERE -->
+        <!-- INCLUDE SIDEBAR -->
         <?php include __DIR__ . '/sidebar.php'; ?>
 
         <div class="main-panel">
