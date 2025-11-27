@@ -858,19 +858,6 @@ footer {
   position: relative;
 }
 
-.scroll-top {
-  background-color: #ffffff;
-  color: #2d0a68;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
 .footer-col a:hover {
   background: white;
   color: #1900ff;
@@ -909,4 +896,34 @@ footer {
   .social-links .links {
     justify-content: center;
   }
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+
+  background-color: #ffffff;
+  color: #2d0a68;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.scroll-top.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }

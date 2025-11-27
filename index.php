@@ -269,9 +269,12 @@ $conn->close();
     <div class="footer-bottom">
         <div class="container">
             <p>&copy; Copyright 2025 Sakibul Hasan Rafi. All right Reserved</p>
-            <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
+            <!-- <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a> -->
         </div>
     </div>
+
+    <!-- SCROLL TOP -->
+    <a href="#" class="scroll-top" aria-label="Scroll to top">&uarr;</a>
 
     <!-- POPUP MENU | TOP OF THE PAGE RIGHT -->
     <div class="popup-menu">
@@ -286,7 +289,7 @@ $conn->close();
                 <li><a href="#testimonials">Testimonial</a></li>
                 <li><a href="#states">Stats</a></li>
                 <li><a href="#abouts">About</a></li>
-                <li><a href="#projects">Projects</a></li>                
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
